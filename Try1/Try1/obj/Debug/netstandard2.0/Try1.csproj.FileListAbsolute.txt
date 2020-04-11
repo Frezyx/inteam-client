@@ -1,0 +1,14 @@
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.csprojAssemblyReference.cache
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.csproj.CoreCompileInputs.cache
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.AssemblyInfoInputs.cache
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.AssemblyInfo.cs
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.dll
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\ref\Try1.dll
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\Try1.pdb
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\bin\Debug\netstandard2.0\Try1.deps.json
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\bin\Debug\netstandard2.0\Try1.dll
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\bin\Debug\netstandard2.0\ref\Try1.dll
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\bin\Debug\netstandard2.0\Try1.pdb
+C:\Users\Konstantin\source\repos\Try1\Try1\Try1\obj\Debug\netstandard2.0\XamlC.stamp
