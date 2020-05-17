@@ -55,13 +55,22 @@ EditText passwordField;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick_Regist(View view) throws IOException {
-
+        final HttpHelper httpHelper = new HttpHelper();
         final TextView textView = (TextView) findViewById(R.id.test);
         final String[] text = {"Прив)"};
         new Thread(new Runnable() {
+
             @Override
             public void run() {
-                text[0] = getHttpResponse().toString();
+                try {
+                    httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
+                    httpHelper.sendPOST("https://httpbin.org/post");
+/*                  httpHelper.asyncGET();*/
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//                text[0] = getHttpResponse().toString();
+
                 /*URL url = null;
                 try {
                     url = new URL(query);
@@ -113,8 +122,6 @@ EditText passwordField;
         }).start();
 
         textView.setText(text[0]);
-        /*Intent i = new Intent(MainActivity.this, LogInActivity.class);
-        startActivity(i);*/
     }
 
     public Object getHttpResponse() {
@@ -127,7 +134,11 @@ EditText passwordField;
 
         Response response = null;
         try {
+            System.out.println(request.url().toString());
+
             response = httpClient.newCall(request).execute();
+            System.out.println(response);
+            System.out.println(response.isSuccessful());
             assert response.body() != null;
             return response.body().string();
         } catch (IOException e) {
