@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyLoginPart</string>
+    <string name="text_regist_content">Зарегистрироваться</string>
+    <string name="regist_email_placeholder">Электронная почта</string>
+    <string name="regist_password_placeholder">Пароль</string>
+    <string name="regist_repeatpass_placeholder">Повторите пароль</string>
+    <string name="text_login_button">Войти</string>
+    <string name="Regist_text_button">Регистрация</string>
+    <string name="LogIn_text_button">Вход</string>
+    <string name="logo_decription">logo</string>
+    <string name="log_in_decription">log_in</string>
+    <string name="regist_decription">regist</string>
+    <string name="username_placeholder">Имя пользователя</string>
+    <string name="avatar_decription">avatar</string>
+    <string name="background_user_decription">userBack</string>
+    <string name="rating_placeholder">5.0</string>
+    <string name="rating_star_decription">ratingStar</string>
+</resources>
