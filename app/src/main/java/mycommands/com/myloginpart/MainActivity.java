@@ -15,23 +15,8 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringJoiner;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -43,29 +28,46 @@ String query = "https://weinteam.000webhostapp.com/api/controllers/user/userget.
 HttpURLConnection connection = null;
 EditText emailField;
 EditText passwordField;
+EditText repeatPassField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toLogInButton = findViewById(R.id.to_logIn_layout);
-        emailField = findViewById(R.id.EmailFieldInRegist);
-        passwordField = findViewById(R.id.PasswordFieldInRegist);
+
+        //инициализация полей ввода
+        emailField = findViewById(R.id.EmailFieldInLogIn);
+        passwordField = findViewById(R.id.PasswordFieldInLogIn);
+        repeatPassField = findViewById(R.id.RepeatFieldInRegist);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onClick_Regist(View view) throws IOException {
+    public void onClick_Regist(View view) throws IOException, JSONException {
         final HttpHelper httpHelper = new HttpHelper();
-        final TextView textView = (TextView) findViewById(R.id.test);
+        TextView textView = (TextView) findViewById(R.id.test);
+        //final String email = String.valueOf(emailField.getText());
+        //final String pass = String.valueOf(passwordField.getText());
         final String[] text = {"Прив)"};
+        final String qq;
+
         new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
-                    httpHelper.sendPOST("https://httpbin.org/post");
-/*                  httpHelper.asyncGET();*/
+                    //httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
+                    if(emailField.getText() != null && passwordField.getText() != null) {
+
+                        if(passwordField.getText() == repeatPassField.getText())
+                         httpHelper.sendPOST(
+                                "https://weinteam.000webhostapp.com/api/controllers/user/userreg.php",
+                                 String.valueOf(emailField.getText()),
+                                 String.valueOf(passwordField.getText()));
+                        else Log.e("Error with match", "Don't match passwords");
+                        /*                  httpHelper.asyncGET();*/
+                    }
+                    else Log.e("Wrong format", "Didn't enter anything");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -121,7 +123,7 @@ EditText passwordField;
             }
         }).start();
 
-        textView.setText(text[0]);
+        //textView.setText(js[0].getString("email"));
     }
 
     public Object getHttpResponse() {

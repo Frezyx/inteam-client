@@ -3,7 +3,17 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -42,14 +52,14 @@ public class HttpHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void sendPOST(String link) throws IOException {
+    public void sendPOST(String link, String email, String password) throws IOException {
 
         // form parameters
         RequestBody formBody = new FormBody.Builder()
                 //Параментры для тела запроса
-                .add("username", "abc")
-                .add("password", "123")
-                .add("custom", "secret")
+                .add("email", email)
+                .add("password", password)
+                //.add("custom", "secret")
                 .build();
 
         Request request = new Request.Builder()
@@ -62,9 +72,54 @@ public class HttpHelper {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
             // Get response body
+            assert response.body() != null;
             System.out.println(response.body().string());
+            //js.optJSONObject(response.body().string());
         }
+    }
 
+    public Item fromJson(final JSONObject obj){
+        final String email = obj.optString("email");
+        //final String pass = obj.optString("password");
+        final double rating = obj.optDouble("rating");
+        return new Item(email, 1, rating);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public ArrayList<Item> sendPOSTusers(String link) throws IOException {
+        ArrayList<Item> users = new ArrayList<>();
+        // form parameters
+        RequestBody formBody = new FormBody.Builder()
+                //Параментры для тела запроса
+                //.add("email", email)
+                //.add("password", password)
+                //.add("custom", "secret")
+                .build();
+
+        Request request = new Request.Builder()
+                .url(link)
+                .post(formBody)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            assert response.body() != null;
+            System.out.println(response.body().string());
+            //JSONArray jsonArray = new JSONArray();
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Item>>(){}.getType();
+            ArrayList<Item> array = gson.fromJson(response.body().string(), type);
+
+            /*for(int i = 0; i < array; i++){
+                final Item user = fromJson(array.getJSONObject(i));
+                if(user != null) users.add(user);
+            }*/
+            return array;
+            //js.optJSONObject(response.body().string());
+        }
     }
 
     //Асинхронный get

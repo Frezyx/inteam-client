@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/EmailFieldInRegist"
+        android:id="@+id/EmailFieldInLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="132dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <EditText
-        android:id="@+id/PasswordFieldInRegist"
+        android:id="@+id/PasswordFieldInLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailFieldInRegist" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailFieldInLogIn" />
 
     <EditText
         android:id="@+id/RepeatFieldInRegist"
@@ -48,7 +48,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordFieldInRegist" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordFieldInLogIn" />
 
     <Button
         android:id="@+id/log_in_button"

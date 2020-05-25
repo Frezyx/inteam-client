@@ -15,4 +15,14 @@
     <string name="background_user_decription">userBack</string>
     <string name="rating_placeholder">5.0</string>
     <string name="rating_star_decription">ratingStar</string>
+    <string name="users_decription">Пользователи</string>
+    <string name="teams_decription">Команды</string>
+    <string name="projects_decription">Проекты</string>
+    <string name="search_hint">Поиск</string>
+    <string name="user_old">Возраст</string>
+    <string name="icon">Иконка</string>
+    <string name="education_placeholder">Инстиут</string>
+    <string name="dividing_line">Линия</string>
+    <string name="about_yourself">О себе:...</string>
+    <string name="tags">#Теги</string>
 </resources>

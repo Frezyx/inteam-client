@@ -8,20 +8,74 @@
 
     <ListView
         android:id="@+id/users_list"
-        android:layout_width="413dp"
-        android:layout_height="297dp"
+        android:layout_width="match_parent"
+        android:layout_height="578dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/teams_search_button"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/testField"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="308dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="@string/search_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/users_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
+
+    <ImageButton
+        android:id="@+id/users_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/avatar_decription"
+        android:background="@drawable/people_button"
+        android:contentDescription="@string/users_decription"
+        android:onClick="onClick_usersSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099"
+        tools:src="@drawable/people_button" />
+
+    <ImageButton
+        android:id="@+id/teams_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/teams_button"
+        android:contentDescription="@string/teams_decription"
+        android:onClick="onClick_teamsSearch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/users_list" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <ImageButton
+        android:id="@+id/projects_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/projects_active_button"
+        android:contentDescription="@string/projects_decription"
+        android:onClick="onClick_projectsSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
