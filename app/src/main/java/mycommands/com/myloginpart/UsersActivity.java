@@ -95,32 +95,25 @@ public class UsersActivity extends AppCompatActivity {
     }
 
     void fillDataWithUsers() {
+        ArrayList<Item> usersList = new ArrayList<Item>();
 
+        final ArrayList<Item>[] finalUsersList = new ArrayList[]{usersList};
         new Thread(new Runnable() {
-//
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
-//                try {
-//                    //httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
-//
                 try {
-                    httpHelper.sendPOSTusers(
+                    finalUsersList[0] = httpHelper.getJson(
                             "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//                        /*                  httpHelper.asyncGET();*/
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
             }
-//
         }).start();
 
-        /*for(int i = 1; i < 12; i++) {
-            items.add(new Item(String.valueOf(i), R.drawable.project_avatar, R.string.projects_decription));
-        }*/
+        for(int i = 0; i < finalUsersList[0].size(); i++) {
+            usersList.add(new Item(finalUsersList[0].get(i).name, R.drawable.project_avatar, R.string.projects_decription));
+        }
     }
 
     void fillDataWithTeams() {

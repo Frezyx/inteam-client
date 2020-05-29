@@ -11,4 +11,10 @@ class Item{
         this.image = image;
         this.rating = rating;
     }
+
+    public Item(String name){
+        this.name = name;
+        this.image = image;
+        this.rating = rating;
+    }
 }

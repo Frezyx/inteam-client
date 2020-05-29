@@ -83,30 +83,15 @@ public class HttpHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void sendPOSTusers(String link) throws IOException {
+    public ArrayList<Item> getJson(String link) throws IOException {
         ArrayList<Item> users = new ArrayList<>();
-        // form parameters
-        RequestBody formBody = new FormBody.Builder()
-                //Параментры для тела запроса
-                //.add("email", email)
-                //.add("password", password)
-                //.add("custom", "secret")
-                .build();
 
         Request request = new Request.Builder()
                 .url(link)
-                .post(formBody)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
-
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            System.out.println(response);
-
-
-
-            // Get response body
             assert response.body() != null;
 
             JSONObject jObject = new JSONObject(response.body().string());
@@ -115,23 +100,15 @@ public class HttpHelper {
             for(int i=0;i<p.length();i++)
             {
                 JSONObject jObjectValue=p.getJSONObject(i);
-                String name = jObjectValue.getString("email");
-                System.out.println(name);
+                Item user = new Item(jObjectValue.getString("email"));
+                users.add(user);
+                System.out.println(user.name);
             }
-            //JSONArray jsonArray = new JSONArray();
-//            Gson gson = new Gson();
-//            Type type = new TypeToken<List<Item>>(){}.getType();
-//            ArrayList<Item> array = gson.fromJson(response.body().string(), type);
 
-            /*for(int i = 0; i < array; i++){
-                final Item user = fromJson(array.getJSONObject(i));
-                if(user != null) users.add(user);
-            }*/
-//            return array;
-//            js.optJSONObject(response.body().string());
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return users;
     }
 
     //Асинхронный get
