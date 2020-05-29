@@ -56,12 +56,15 @@ EditText repeatPassField;
                 try {
                     if(emailField.getText() != null && passwordField.getText() != null) {
 
-                        if(passwordField.getText() == repeatPassField.getText())
-                         httpHelper.sendPOST(
-                                "https://weinteam.000webhostapp.com/api/controllers/user/userreg.php",
-                                 String.valueOf(emailField.getText()),
-                                 String.valueOf(passwordField.getText()));
-                        else Log.e("Error with match", "Don't match passwords");
+                        String firstPass = String.valueOf(passwordField.getText());
+                        String secPass = String.valueOf(repeatPassField.getText());
+
+                        if(firstPass.equals(secPass)){
+                            httpHelper.sendPOST(
+                                    "https://weinteam.000webhostapp.com/api/controllers/user/userreg.php",
+                                    String.valueOf(emailField.getText()),
+                                    String.valueOf(passwordField.getText()));
+                        } else Log.e("Error with match", "Don't match passwords");
                     }
                     else Log.e("Wrong format", "Didn't enter anything");
                 } catch (IOException e) {
