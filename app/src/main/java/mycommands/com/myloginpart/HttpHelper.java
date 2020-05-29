@@ -3,9 +3,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,7 +83,7 @@ public class HttpHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public ArrayList<Item> sendPOSTusers(String link) throws IOException {
+    public void sendPOSTusers(String link) throws IOException {
         ArrayList<Item> users = new ArrayList<>();
         // form parameters
         RequestBody formBody = new FormBody.Builder()
@@ -105,20 +102,35 @@ public class HttpHelper {
 
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
+            System.out.println(response);
+
+
+
             // Get response body
             assert response.body() != null;
-            System.out.println(response.body().string());
+
+            JSONObject jObject = new JSONObject(response.body().string());
+            JSONArray p = jObject.getJSONArray("users");
+
+            for(int i=0;i<p.length();i++)
+            {
+                JSONObject jObjectValue=p.getJSONObject(i);
+                String name = jObjectValue.getString("email");
+                System.out.println(name);
+            }
             //JSONArray jsonArray = new JSONArray();
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<Item>>(){}.getType();
-            ArrayList<Item> array = gson.fromJson(response.body().string(), type);
+//            Gson gson = new Gson();
+//            Type type = new TypeToken<List<Item>>(){}.getType();
+//            ArrayList<Item> array = gson.fromJson(response.body().string(), type);
 
             /*for(int i = 0; i < array; i++){
                 final Item user = fromJson(array.getJSONObject(i));
                 if(user != null) users.add(user);
             }*/
-            return array;
-            //js.optJSONObject(response.body().string());
+//            return array;
+//            js.optJSONObject(response.body().string());
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 

@@ -97,21 +97,25 @@ public class UsersActivity extends AppCompatActivity {
     void fillDataWithUsers() {
 
         new Thread(new Runnable() {
-
+//
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
+//                try {
+//                    //httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
+//
                 try {
-                    //httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
-
-                            items = httpHelper.sendPOSTusers(
-                                    "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
-                        /*                  httpHelper.asyncGET();*/
+                    httpHelper.sendPOSTusers(
+                            "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+//                        /*                  httpHelper.asyncGET();*/
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
-
+//
         }).start();
 
         /*for(int i = 1; i < 12; i++) {
