@@ -46,8 +46,6 @@ EditText repeatPassField;
     public void onClick_Regist(View view) throws IOException, JSONException {
         final HttpHelper httpHelper = new HttpHelper();
         TextView textView = (TextView) findViewById(R.id.test);
-        //final String email = String.valueOf(emailField.getText());
-        //final String pass = String.valueOf(passwordField.getText());
         final String[] text = {"Прив)"};
         final String qq;
 
@@ -56,7 +54,6 @@ EditText repeatPassField;
             @Override
             public void run() {
                 try {
-                    //httpHelper.sendGET("https://weinteam.000webhostapp.com/api/controllers/user/userget.php");
                     if(emailField.getText() != null && passwordField.getText() != null) {
 
                         if(passwordField.getText() == repeatPassField.getText())
@@ -65,71 +62,20 @@ EditText repeatPassField;
                                  String.valueOf(emailField.getText()),
                                  String.valueOf(passwordField.getText()));
                         else Log.e("Error with match", "Don't match passwords");
-                        /*                  httpHelper.asyncGET();*/
                     }
                     else Log.e("Wrong format", "Didn't enter anything");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//                text[0] = getHttpResponse().toString();
-
-                /*URL url = null;
-                try {
-                    url = new URL(query);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    assert url != null;
-                    connection = (HttpURLConnection)url.openConnection();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    connection.setRequestMethod("POST");
-                } catch (ProtocolException e) {
-                    e.printStackTrace();
-                }
-                connection.setRequestProperty("Content-Type", "application/json; utf-8");
-                connection.setRequestProperty("Accept", "application/json");
-                connection.setDoOutput(true);
-
-                String jsonInputString = "{\"email\": \"hui\", \"password\": \"pasasi\"}";
-
-                try(OutputStream os = connection.getOutputStream()) {
-                    byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
-                    os.write(input, 0, input.length);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-
-                /*try(BufferedReader br = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-                    StringBuilder response = new StringBuilder();
-                    String responseLine = null;
-                    while ((responseLine = br.readLine()) != null) {
-                        response.append(responseLine.trim());
-                    }
-                    if (response != null) {
-                        TextView textView = (TextView) findViewById(R.id.test);
-                        textView.setText(response.toString());
-                    }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
             }
         }).start();
+        Intent i = new Intent(MainActivity.this, EditProfileActivity.class);
+        startActivity(i);
 
-        //textView.setText(js[0].getString("email"));
     }
 
     public Object getHttpResponse() {
         OkHttpClient httpClient = new OkHttpClient();
-
-        //String url = "http://4pda.ru";
         Request request = new Request.Builder()
                 .url(query)
                 .build();

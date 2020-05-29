@@ -23,6 +23,14 @@
     <string name="icon">Иконка</string>
     <string name="education_placeholder">Инстиут</string>
     <string name="dividing_line">Линия</string>
-    <string name="about_yourself">О себе:...</string>
+    <string name="about_yourself">О себе:…</string>
     <string name="tags">#Теги</string>
+    <string name="commands_list">Команды:</string>
+    <string name="add_photo_decription">ДобавитьФото</string>
+    <string name="real_name_placeholder">Имя</string>
+    <string name="real_surname_placeholder">Фамилия</string>
+    <string name="city_placeholder">Город</string>
+    <string name="edu_placeholder">Образование</string>
+    <string name="oldness_placeholder">Возраст</string>
+    <string name="about_yourself_placeholder">О себе</string>
 </resources>
