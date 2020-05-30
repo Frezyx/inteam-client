@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="333dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/edit_profile_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="124dp"
+                android:contentDescription="@string/background_user_decription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/create_profile_background" />
+
+            <ImageButton
+                android:id="@+id/edit_photo_button"
+                android:layout_width="158dp"
+                android:layout_height="159dp"
+                android:layout_marginBottom="752dp"
+                android:background="@drawable/add_photo_button"
+                android:contentDescription="@string/add_photo_decription"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_profile_background"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background" />
+
+            <EditText
+                android:id="@+id/edit_name_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:autofillHints=""
+                android:background="@drawable/editer_background"
+                android:ems="10"
+                android:hint="@string/real_name_placeholder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_photo_button" />
+
+            <EditText
+                android:id="@+id/edit_surname_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/editer_background"
+                android:ems="10"
+                android:hint="@string/real_surname_placeholder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_name_field" />
+
+            <EditText
+                android:id="@+id/edit_city_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/editer_background"
+                android:ems="10"
+                android:hint="@string/city_placeholder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_surname_field" />
+
+            <EditText
+                android:id="@+id/edit_edu_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/editer_background"
+                android:ems="10"
+                android:hint="@string/edu_placeholder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_city_field" />
+
+            <EditText
+                android:id="@+id/edit_oldness_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/editer_background"
+                android:ems="10"
+                android:hint="@string/oldness_placeholder"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_edu_field" />
+
+            <EditText
+                android:id="@+id/edit_about_yourself_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/edit_about_yourself_background"
+                android:ems="10"
+                android:hint="@string/about_yourself_placeholder"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="100dp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_oldness_field" />
+
+            <ImageButton
+                android:id="@+id/create_profile_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/create_profile_button"
+                android:contentDescription="@string/regist_decription"
+                android:onClick="onClick_createProfile"
+                app:layout_constraintEnd_toEndOf="@+id/edit_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/edit_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/edit_about_yourself_field" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

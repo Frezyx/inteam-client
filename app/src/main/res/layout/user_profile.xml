@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/user_profile_old_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:contentDescription="@string/icon"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.247"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/rating_star_profile"
+                app:srcCompat="@drawable/user_icon" />
+
+            <ImageView
+                android:id="@+id/user_profile_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="92dp"
+                android:contentDescription="@string/users_decription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/user_profile_background" />
+
+            <ImageView
+                android:id="@+id/user_profile_avatar"
+                android:layout_width="101dp"
+                android:layout_height="108dp"
+                android:contentDescription="@string/users_decription"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.098"
+                app:srcCompat="@drawable/user_avatar" />
+
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/username_placeholder"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/user_profile_avatar"
+                app:layout_constraintTop_toTopOf="@+id/user_profile_background"
+                app:layout_constraintVertical_bias="0.017" />
+
+            <ImageView
+                android:id="@+id/rating_star_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/rating_star_decription"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.236"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_avatar"
+                app:srcCompat="@drawable/rating_star" />
+
+            <TextView
+                android:id="@+id/user_profile_rating"
+                android:layout_width="29dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/rating_placeholder"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/rating_star_profile"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_avatar" />
+
+            <TextView
+                android:id="@+id/user_old"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/user_old"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.019"
+                app:layout_constraintStart_toEndOf="@+id/user_profile_old_icon"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_rating" />
+
+            <ImageView
+                android:id="@+id/user_profile_edu_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/icon"
+                app:layout_constraintBottom_toBottomOf="@+id/user_profile_background"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.236"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_old_icon"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/edu_icon" />
+
+            <TextView
+                android:id="@+id/user_profile_edu"
+                android:layout_width="196dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/education_placeholder"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/user_profile_background"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/user_profile_edu_icon"
+                app:layout_constraintTop_toBottomOf="@+id/user_old"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <ImageView
+                android:id="@+id/dividing_line_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/dividing_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_edu"
+                app:srcCompat="@drawable/dividing_line" />
+
+            <ImageView
+                android:id="@+id/dividing_line_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/dividing_line"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_tags"
+                app:srcCompat="@drawable/dividing_line" />
+
+            <TextView
+                android:id="@+id/user_about_yourself"
+                android:layout_width="298dp"
+                android:layout_height="93dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/about_yourself"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line_1" />
+
+            <TextView
+                android:id="@+id/user_profile_tags"
+                android:layout_width="296dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/tags"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/user_about_yourself" />
+
+            <TextView
+                android:id="@+id/user-profile_teams"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/commands_list"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintHorizontal_bias="0.104"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line_2" />
+
+            <ListView
+                android:id="@+id/user_profile_teamslist"
+                android:layout_width="303dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="16dp"
+                android:isScrollContainer="false"
+                android:keepScreenOn="false"
+                android:overScrollMode="never"
+                android:scrollingCache="false"
+                android:smoothScrollbar="false"
+                app:layout_constraintEnd_toEndOf="@+id/user_profile_background"
+                app:layout_constraintStart_toStartOf="@+id/user_profile_background"
+                app:layout_constraintTop_toBottomOf="@+id/user-profile_teams" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
