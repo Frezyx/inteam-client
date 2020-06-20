@@ -98,23 +98,35 @@ public class UsersActivity extends AppCompatActivity {
     }
 
     void fillDataWithUsers() {
+<<<<<<< HEAD
         final ArrayList<Item>[] usersList = new ArrayList[]{new ArrayList<Item>()};
 
         //final ArrayList<Item>[] finalUsersList = new ArrayList[]{usersList};
+=======
+        ArrayList<Item> usersList = new ArrayList<Item>();
+
+        final ArrayList<Item>[] finalUsersList = new ArrayList[]{usersList};
+>>>>>>> d2509563144e2a409c0d2c7f89e81d673c905709
         new Thread(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
                 try {
+<<<<<<< HEAD
                     synchronized (this) {
                         usersList[0] = httpHelper.getJson(
                                 "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
                     }
+=======
+                    finalUsersList[0] = httpHelper.getJson(
+                            "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
+>>>>>>> d2509563144e2a409c0d2c7f89e81d673c905709
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+<<<<<<< HEAD
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -124,6 +136,12 @@ public class UsersActivity extends AppCompatActivity {
             items.add(new Item(usersList[0].get(i).name, R.drawable.user_avatar, usersList[0].get(i).rating));
         }
         //items = usersList;
+=======
+
+        for(int i = 0; i < finalUsersList[0].size(); i++) {
+            usersList.add(new Item(finalUsersList[0].get(i).name, R.drawable.project_avatar, R.string.projects_decription));
+        }
+>>>>>>> d2509563144e2a409c0d2c7f89e81d673c905709
     }
 
     void fillDataWithTeams() {
