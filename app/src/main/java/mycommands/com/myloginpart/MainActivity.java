@@ -102,7 +102,8 @@ EditText repeatPassField;
     }
 
     public void onClick_ToLogIn(View view){
-        Intent i = new Intent(MainActivity.this, LogInActivity.class);
+        //Intent i = new Intent(MainActivity.this, LogInActivity.class);
+        Intent i = new Intent(MainActivity.this, CreateProjectActivity.class);
         startActivity(i);
     }
 }

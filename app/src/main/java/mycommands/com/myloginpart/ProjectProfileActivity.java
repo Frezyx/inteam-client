@@ -3,7 +3,6 @@ package mycommands.com.myloginpart;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,41 +12,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-public class UserProfileActivity extends AppCompatActivity {
-    //обозначение переданных полей
+public class ProjectProfileActivity extends AppCompatActivity {
     int position;
-    String userName;
+    String name;
     int image;
     double rating;
 
-    //инициализация кнопок
     ImageView avatar;
-    TextView username;
-    TextView education;
-    TextView oldness;
+    TextView projectName;
     TextView ratingField;
-    TextView decription_about_yourself;
-    TextView tags;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_profile);
+        setContentView(R.layout.project_profile);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        //userName = "Имя рользователя"; //hint
-
         recieveIntent();
-        if(userName == null) userName = "Имя рользователя";
-        //инициализация элемнтов профиля
-        avatar = findViewById(R.id.user_profile_avatar);
-        username = findViewById(R.id.user_profile_name);
-        ratingField = findViewById(R.id.user_profile_rating);
 
-        //заполнение
+        avatar = findViewById(R.id.project_avatar);
+        projectName = findViewById(R.id.project_name);
+        ratingField = findViewById(R.id.views_count_text);
+
         avatar.setImageResource(image);
-        username.setText(String.valueOf(userName));
+        projectName.setText(name);
         ratingField.setText(String.valueOf(rating));
     }
 
@@ -55,8 +44,8 @@ public class UserProfileActivity extends AppCompatActivity {
     public void recieveIntent(){
         Intent i = getIntent();
         position = i.getIntExtra("position", 0);
-        userName = Objects.requireNonNull(i.getExtras().get("username")).toString();
-        image = i.getIntExtra("imageURL", 0);
+        name = Objects.requireNonNull(i.getExtras().get("name")).toString();
+        image = i.getIntExtra("imageURL", R.drawable.project_avatar);
         rating = i.getDoubleExtra("rating", 0.0);
 
     }

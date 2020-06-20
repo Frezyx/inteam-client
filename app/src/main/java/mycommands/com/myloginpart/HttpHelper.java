@@ -84,7 +84,7 @@ public class HttpHelper {
         final String email = obj.optString("email");
         //final String pass = obj.optString("password");
         final double rating = obj.optDouble("rating");
-        return new Item(email, 1, rating);
+        return new Item(email, 1, rating, true);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

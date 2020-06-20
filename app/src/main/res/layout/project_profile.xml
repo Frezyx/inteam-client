@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/project_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="92dp"
+                android:contentDescription="@string/background_user_decription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/project_background" />
+
+            <ImageView
+                android:id="@+id/project_avatar"
+                android:layout_width="101dp"
+                android:layout_height="108dp"
+                android:layout_marginTop="52dp"
+                android:contentDescription="@string/projects_decription"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.11"
+                app:layout_constraintStart_toStartOf="@+id/project_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/project_avatar" />
+
+            <TextView
+                android:id="@+id/project_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/project_name_placeholder"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/project_avatar"
+                app:layout_constraintTop_toTopOf="@+id/project_background" />
+
+            <ImageView
+                android:id="@+id/geolocation_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/geolocation_description"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="@+id/project_background"
+                app:layout_constraintTop_toBottomOf="@+id/project_avatar"
+                app:srcCompat="@drawable/geolocation" />
+
+            <TextView
+                android:id="@+id/geolocation_text"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="@string/geolocation_placeholder"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/geolocation_icon"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.36"
+                app:layout_constraintStart_toEndOf="@+id/geolocation_icon"
+                app:layout_constraintTop_toTopOf="@+id/geolocation_icon" />
+
+            <ImageView
+                android:id="@+id/category_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/category_description"
+                app:layout_constraintEnd_toEndOf="@+id/geolocation_icon"
+                app:layout_constraintStart_toStartOf="@+id/geolocation_icon"
+                app:layout_constraintTop_toBottomOf="@+id/geolocation_icon"
+                app:srcCompat="@drawable/project_category" />
+
+            <TextView
+                android:id="@+id/category_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/category_icon"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/geolocation_text"
+                app:layout_constraintTop_toTopOf="@+id/category_icon"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/views_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/views_description"
+                app:layout_constraintEnd_toEndOf="@+id/category_icon"
+                app:layout_constraintStart_toStartOf="@+id/category_icon"
+                app:layout_constraintTop_toBottomOf="@+id/category_icon"
+                app:srcCompat="@drawable/views_counter" />
+
+            <TextView
+                android:id="@+id/views_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/views_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/views_icon"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/category_text"
+                app:layout_constraintTop_toTopOf="@+id/views_icon"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/project_owner_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/project_owner_description"
+                app:layout_constraintEnd_toEndOf="@+id/views_icon"
+                app:layout_constraintStart_toStartOf="@+id/views_icon"
+                app:layout_constraintTop_toBottomOf="@+id/views_icon"
+                app:srcCompat="@drawable/project_owner_icon" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project_owner_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/project_owner_icon"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/views_count_text"
+                app:layout_constraintTop_toTopOf="@+id/project_owner_icon"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/dividing_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/dividing_line"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintStart_toStartOf="@+id/project_background"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:srcCompat="@drawable/dividing_line" />
+
+            <ImageView
+                android:id="@+id/dividing_line2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/dividing_line"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.482"
+                app:layout_constraintStart_toStartOf="@+id/project_background"
+                app:layout_constraintTop_toBottomOf="@+id/about_project_text"
+                app:srcCompat="@drawable/dividing_line" />
+
+            <TextView
+                android:id="@+id/about_project_text"
+                android:layout_width="298dp"
+                android:layout_height="93dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/about_project_placeholder"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintStart_toStartOf="@+id/project_background"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/participants_list"
+                app:layout_constraintEnd_toEndOf="@+id/project_background"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/about_project_text"
+                app:layout_constraintTop_toBottomOf="@+id/dividing_line2" />
+
+            <LinearLayout
+                android:id="@+id/participants_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/about_project_text"
+                app:layout_constraintStart_toStartOf="@+id/about_project_text"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"></LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
