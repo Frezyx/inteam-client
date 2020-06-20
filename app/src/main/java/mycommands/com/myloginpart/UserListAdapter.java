@@ -47,7 +47,7 @@ public class UserListAdapter extends BaseAdapter {
             if(user != null) {
                 ((ImageView) view.findViewById(R.id.avatar)).setImageResource(user.image);
                 ((TextView) view.findViewById(R.id.username)).setText(user.name);
-                ((TextView) view.findViewById(R.id.rating)).setText((int) user.rating);
+                ((TextView) view.findViewById(R.id.rating)).setText(String.valueOf(user.rating));
                 //((ImageView) view.findViewById(R.id.rate_star)).setImageResource(R.drawable.rating_star);
                 //((ImageView) view.findViewById(R.id.background)).setImageResource(R.drawable.user_backgroung);
             }

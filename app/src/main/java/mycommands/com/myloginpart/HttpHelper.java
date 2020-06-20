@@ -3,9 +3,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -26,7 +24,11 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class HttpHelper {
-    private final OkHttpClient httpClient = new OkHttpClient();
+    private final OkHttpClient httpClient = new OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+            .build();;
 
 
     //POST - запрос
@@ -86,40 +88,32 @@ public class HttpHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public ArrayList<Item> sendPOSTusers(String link) throws IOException {
+    public ArrayList<Item> getJson(String link) throws IOException {
         ArrayList<Item> users = new ArrayList<>();
-        // form parameters
-        RequestBody formBody = new FormBody.Builder()
-                //Параментры для тела запроса
-                //.add("email", email)
-                //.add("password", password)
-                //.add("custom", "secret")
-                .build();
 
         Request request = new Request.Builder()
                 .url(link)
-                .post(formBody)
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
-
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
             assert response.body() != null;
-            System.out.println(response.body().string());
-            //JSONArray jsonArray = new JSONArray();
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<Item>>(){}.getType();
-            ArrayList<Item> array = gson.fromJson(response.body().string(), type);
 
-            /*for(int i = 0; i < array; i++){
-                final Item user = fromJson(array.getJSONObject(i));
-                if(user != null) users.add(user);
-            }*/
-            return array;
-            //js.optJSONObject(response.body().string());
+            JSONObject jObject = new JSONObject(response.body().string());
+            JSONArray p = jObject.getJSONArray("users");
+
+            for(int i=0;i<p.length();i++)
+            {
+                JSONObject jObjectValue=p.getJSONObject(i);
+                Item user = new Item(jObjectValue.getString("email"));
+                users.add(user);
+                System.out.println(user.name);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        return users;
     }
 
     //Асинхронный get
