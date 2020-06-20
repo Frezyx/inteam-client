@@ -21,6 +21,8 @@
         <activity android:name=".UsersActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".EditProfileActivity" />
+        <activity android:name=".ProjectProfileActivity" />
+        <activity android:name=".CreateProjectActivity" />
     </application>
 
 </manifest>

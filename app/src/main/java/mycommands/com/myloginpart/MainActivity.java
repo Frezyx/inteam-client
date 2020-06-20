@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,10 +31,13 @@ EditText emailField;
 EditText passwordField;
 EditText repeatPassField;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         toLogInButton = findViewById(R.id.to_logIn_layout);
 
         //инициализация полей ввода
@@ -45,7 +49,6 @@ EditText repeatPassField;
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick_Regist(View view) throws IOException, JSONException {
         final HttpHelper httpHelper = new HttpHelper();
-        TextView textView = (TextView) findViewById(R.id.test);
         final String[] text = {"Прив)"};
         final String qq;
 
@@ -99,7 +102,8 @@ EditText repeatPassField;
     }
 
     public void onClick_ToLogIn(View view){
-        Intent i = new Intent(MainActivity.this, LogInActivity.class);
+        //Intent i = new Intent(MainActivity.this, LogInActivity.class);
+        Intent i = new Intent(MainActivity.this, CreateProjectActivity.class);
         startActivity(i);
     }
 }

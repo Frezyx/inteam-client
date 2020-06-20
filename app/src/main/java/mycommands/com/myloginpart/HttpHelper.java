@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -23,7 +24,11 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class HttpHelper {
-    private final OkHttpClient httpClient = new OkHttpClient();
+    private final OkHttpClient httpClient = new OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+            .build();;
 
 
     //POST - запрос
@@ -79,7 +84,7 @@ public class HttpHelper {
         final String email = obj.optString("email");
         //final String pass = obj.optString("password");
         final double rating = obj.optDouble("rating");
-        return new Item(email, 1, rating);
+        return new Item(email, 1, rating, true);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

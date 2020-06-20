@@ -25,7 +25,7 @@
     <string name="dividing_line">Линия</string>
     <string name="about_yourself">О себе:…</string>
     <string name="tags">#Теги</string>
-    <string name="commands_list">Команды:</string>
+    <string name="projects_list">Проекты:</string>
     <string name="add_photo_decription">ДобавитьФото</string>
     <string name="real_name_placeholder">Имя</string>
     <string name="real_surname_placeholder">Фамилия</string>
@@ -33,4 +33,20 @@
     <string name="edu_placeholder">Образование</string>
     <string name="oldness_placeholder">Возраст</string>
     <string name="about_yourself_placeholder">О себе</string>
+    <string name="project_name_placeholder">Название проекта</string>
+    <string name="geolocation_placeholder">Екатеринбург</string>
+    <string name="geolocation_description">Екатеринбург</string>
+    <string name="category_description">КатегорияПроекта</string>
+    <string name="category_placeholder">Категория Проекта</string>
+    <string name="views_placeholder">Количество Просмотров</string>
+    <string name="views_description">КоличествоПросмотров</string>
+    <string name="project_owner_description">СоздательПроекта</string>
+    <string name="project_owner_placeholder">Создатель Проекта</string>
+    <string name="about_project_placeholder">О проекте:…</string>
+    <string name="participants_list">Участники:</string>
+    <string name="projects_types_descriptions">Вид</string>
+    <string name="project_type_it">IT</string>
+    <string name="project_type_social">Social</string>
+    <string name="project_type_creative">Creative</string>
+    <string name="projects_types_sports">Sports</string>
 </resources>

@@ -16,23 +16,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
+
+enum Category{
+    Users,
+    Projects
+}
 
 public class UsersActivity extends AppCompatActivity {
     ListView listView;
     UserListAdapter adapter;
     ArrayList<Item> items = new ArrayList<Item>();
     final HttpHelper httpHelper = new HttpHelper();
+    Category category;
 
     ImageButton to_users;
     ImageButton to_teams;
     ImageButton to_projects;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_list);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         to_users = findViewById(R.id.users_search_button);
         to_teams = findViewById(R.id.teams_search_button);
@@ -47,16 +56,36 @@ public class UsersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(UsersActivity.this, UserProfileActivity.class);
-                i.putExtra("position", position);
-                Item user = adapter.getUser(position);
-                i.putExtra("username", user.name);
-                i.putExtra("imageURL", user.image);
-                i.putExtra("rating", user.rating);
-                startActivity(i);
+                //Intent i = new Intent(UsersActivity.this, UserProfileActivity.class);
+                if(category == Category.Users)
+                    startUserProfileActivity(position);
+                if(category == Category.Projects)
+                    startProjectProfileActivity(position);
             }
         });
     }
+
+    public void startProjectProfileActivity(int position){
+        Intent i = new Intent(UsersActivity.this, ProjectProfileActivity.class);
+        i.putExtra("position", position);
+        Item project = adapter.getUser(position);
+        i.putExtra("name", project.name);
+        i.putExtra("imageURl", project.image);
+        i.putExtra("rating", project.rating);
+        startActivity(i);
+    }
+
+
+    public void startUserProfileActivity(int position){
+        Intent i = new Intent(UsersActivity.this, UserProfileActivity.class);
+        i.putExtra("position", position);
+        Item user = adapter.getUser(position);
+        i.putExtra("username", user.name);
+        i.putExtra("imageURL", user.image);
+        i.putExtra("rating", user.rating);
+        startActivity(i);
+    }
+
 
     public void onClick_usersSearch(View view){
         items.clear();
@@ -89,36 +118,44 @@ public class UsersActivity extends AppCompatActivity {
     }
 
     void fillDataWithProjects() {
+        category = Category.Projects;
         for(int i = 1; i < 12; i++){
-            items.add(new Item(String.valueOf(i), R.drawable.user_avatar, R.string.app_name));
+            items.add(new Item(String.valueOf(i), R.drawable.project_avatar, 4.7, false));
         }
     }
 
     void fillDataWithUsers() {
-        ArrayList<Item> usersList = new ArrayList<Item>();
-
-        final ArrayList<Item>[] finalUsersList = new ArrayList[]{usersList};
+        final ArrayList<Item>[] usersList = new ArrayList[]{new ArrayList<Item>()};
+        category = Category.Users;
+        //final ArrayList<Item>[] finalUsersList = new ArrayList[]{usersList};
         new Thread(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
                 try {
-                    finalUsersList[0] = httpHelper.getJson(
-                            "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
+                    synchronized (this) {
+                        usersList[0] = httpHelper.getJson(
+                                "https://weinteam.000webhostapp.com/api/controllers/user/usergetall.php");
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-
-        for(int i = 0; i < finalUsersList[0].size(); i++) {
-            usersList.add(new Item(finalUsersList[0].get(i).name, R.drawable.project_avatar, R.string.projects_decription));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        for (int i = 0; i < usersList[0].size(); i++) {
+            items.add(new Item(usersList[0].get(i).name, R.drawable.user_avatar, usersList[0].get(i).rating, true));
+        }
+        //items = usersList;
     }
 
     void fillDataWithTeams() {
         for(int i = 1; i < 12; i++){
-            items.add(new Item(String.valueOf(i), R.drawable.teams_avatar, R.string.teams_decription));
+            items.add(new Item(String.valueOf(i), R.drawable.teams_avatar, R.string.teams_decription, false));
         }
     }
 }

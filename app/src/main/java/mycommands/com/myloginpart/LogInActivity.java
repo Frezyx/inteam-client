@@ -14,16 +14,20 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LogInActivity extends AppCompatActivity {
     Button toRegistButton;
     EditText emailField;
     EditText passwordField;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         toRegistButton = findViewById(R.id.to_regist_layout);
         emailField = findViewById(R.id.EmailFieldInLogIn);
         passwordField = findViewById(R.id.PasswordFieldInLogIn);
